@@ -1,2 +1,7 @@
 
-  @import "./components/App.scss";
+  html, body, #react-root, .app {
+    height: 100%;
+    width: 100%;
+  }
+
+  @import "./components/index.scss";
