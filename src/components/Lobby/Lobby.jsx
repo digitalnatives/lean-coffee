@@ -8,14 +8,13 @@ class Lobby extends PureComponent {
     return (
       <div>
         {
-          loading ? 'Loading'
-            : allLeanCoffees.map(leanCoffee => (
-              <div key={leanCoffee.id}>
-                <div>{leanCoffee.state}</div>
-                <div>{leanCoffee.host.name}</div>
-                <div>{leanCoffee._topicsMeta.count}</div>
-              </div>
-            ))
+          loading ? 'Loading' : allLeanCoffees.map(leanCoffee => (
+            <div key={leanCoffee.id}>
+              <div>{leanCoffee.state}</div>
+              <div>{leanCoffee.host ? leanCoffee.host.name : 'No host'}</div>
+              <div>{leanCoffee._topicsMeta.count}</div>
+            </div>
+          ))
         }
       </div>
     )
