@@ -6,7 +6,7 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
 const networkInterface = createNetworkInterface({
-    uri: 'https://api.graph.cool/simple/v1/cj4vib6mwvqm50131ovkzqqht'
+    uri: 'https://api.graph.cool/simple/v1/cj3okomy5fb9l0198ja30bnhu'
 })
 const client = new ApolloClient({ networkInterface })
 

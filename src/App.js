@@ -5,7 +5,7 @@ import './App.css'
 
 class App extends Component {
   render() {
-    const { loading, allPosts } = this.props.data
+    const { loading, allLeanCoffees } = this.props.data
 
     return (
       <div className="App">
@@ -16,18 +16,11 @@ class App extends Component {
         <div className="App-content">
           {
             loading ? 'Loading'
-            : allPosts.map(post => (
-              <div className="Post" key={post.id}>
-                <img
-                  src={post.imageUrl}
-                  alt={post.description}
-                  style={{
-                    width: '600px',
-                    maxHeight: '400px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div>{post.description}</div>
+            : allLeanCoffees.map(leanCoffee => (
+              <div className="LeanCoffee" key={leanCoffee.id}>
+                <div>{leanCoffee.state}</div>
+                <div>{leanCoffee.host.name}</div>
+                <div>{leanCoffee._topicsMeta.count}</div>
               </div>
             ))
           }
@@ -37,14 +30,19 @@ class App extends Component {
   }
 }
 
-const ListQuery = gql`
-  query allPosts {
-    allPosts(orderBy: createdAt_DESC) {
+const ListLeanCoffees = gql`
+  query {
+    allLeanCoffees {
       id
-      description
-      imageUrl
+      state
+      host {
+        name
+      }
+      _topicsMeta {
+        count
+      }
     }
   }
 `
 
-export default graphql(ListQuery)(App)
+export default graphql(ListLeanCoffees)(App)
