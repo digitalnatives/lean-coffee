@@ -1,30 +1,22 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { gql, graphql } from 'react-apollo'
-import logo from './logo.svg'
-import './App.css'
 
-class App extends Component {
+class Lobby extends PureComponent {
   render() {
     const { loading, allLeanCoffees } = this.props.data
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <div className="App-content">
-          {
-            loading ? 'Loading'
+      <div>
+        {
+          loading ? 'Loading'
             : allLeanCoffees.map(leanCoffee => (
-              <div className="LeanCoffee" key={leanCoffee.id}>
+              <div key={leanCoffee.id}>
                 <div>{leanCoffee.state}</div>
                 <div>{leanCoffee.host.name}</div>
                 <div>{leanCoffee._topicsMeta.count}</div>
               </div>
             ))
-          }
-        </div>
+        }
       </div>
     )
   }
@@ -45,4 +37,4 @@ const ListLeanCoffees = gql`
   }
 `
 
-export default graphql(ListLeanCoffees)(App)
+export default graphql(ListLeanCoffees)(Lobby)
